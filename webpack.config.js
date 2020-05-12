@@ -10,7 +10,7 @@ const config = {
   mode: process.env.NODE_ENV,
   context: __dirname + '/src',
   entry: {
-    'background': './background.js',
+    'background': './background.ts',
     'popup/popup': './popup/popup.js',
   },
   output: {
@@ -18,7 +18,7 @@ const config = {
     filename: '[name].js',
   },
   resolve: {
-    extensions: ['.js', '.vue'],
+    extensions: ['.js', '.ts', '.vue'],
   },
   module: {
     rules: [
@@ -30,6 +30,10 @@ const config = {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
+      },
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
       },
       {
         test: /\.css$/,
